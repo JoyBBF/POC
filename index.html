@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Drawer</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #6200ea;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .drawer.open {
+      transform: translateX(0);
+    }
+    .drawer a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 1rem 0;
+    }
+    .drawer a:hover {
+      text-decoration: underline;
+    }
+    /* Contenido principal */
+    .content {
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+    .content.shift {
+      margin-left: 250px;
+    }
+    /* Botón del menú */
+    .menu-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Drawer -->
+  <div class="drawer" id="drawer">
+    <h2>Menú</h2>
+    <a href="#home">Inicio</a>
+    <a href="#about">Acerca de</a>
+    <a href="#contact">Contacto</a>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content" id="content">
+    <button class="menu-button" id="menuButton">☰</button>
+    <header>
+      <h1>¡Bienvenida!</h1>
+    </header>
+    <main>
+      <p>Este es el contenido principal de la página. Haz clic en el ícono de menú para abrir el drawer.</p>
+    </main>
+  </div>
+
+  <script>
+    const drawer = document.getElementById('drawer');
+    const content = document.getElementById('content');
+    const menuButton = document.getElementById('menuButton');
+
+    menuButton.addEventListener('click', () => {
+      drawer.classList.toggle('open');
+      content.classList.toggle('shift');
+    });
+  </script>
+</body>
+</html>
